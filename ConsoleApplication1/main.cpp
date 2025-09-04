@@ -5,7 +5,7 @@ class Student
 private:
 	char* FIO;
 	int age;
-	char* phone;
+	char* color;
 	char* city;
 	char* country;
 	char* university;
@@ -15,7 +15,7 @@ public:
 	{
 		FIO = nullptr;
 		age = 0;
-		phone = nullptr;
+		color = nullptr;
 		city = nullptr;
 		country = nullptr;
 		university = nullptr;
@@ -27,8 +27,8 @@ public:
 		FIO = new char[strlen(n) + 1];
 		strcpy_s(FIO, strlen(n) + 1, n);
 		age = a;
-		phone = new char[strlen(p) + 1];
-		strcpy_s(phone, strlen(p) + 1, p);
+		color = new char[strlen(p) + 1];
+		strcpy_s(color, strlen(p) + 1, p);
 		city = new char[strlen(c) + 1];
 		strcpy_s(city, strlen(c) + 1, c);
 		country = new char[strlen(count) + 1];
@@ -42,7 +42,7 @@ public:
 	{
 		cout << "Destructor\n";
 		delete[] FIO;
-		delete[] phone;
+		delete[] color;
 		delete[] city;
 		delete[] country;
 		delete[] university;
@@ -54,9 +54,9 @@ public:
 		{
 			delete[] FIO;
 		}
-		if (phone != nullptr)
+		if (color != nullptr)
 		{
-			delete[] phone;
+			delete[] color;
 		}
 		if (city != nullptr)
 		{
@@ -77,8 +77,8 @@ public:
 		FIO = new char[strlen(n) + 1];
 		strcpy_s(FIO, strlen(n) + 1, n);
 		age = a;
-		phone = new char[strlen(p) + 1];
-		strcpy_s(phone, strlen(p) + 1, p);
+		color = new char[strlen(p) + 1];
+		strcpy_s(color, strlen(p) + 1, p);
 		city = new char[strlen(c) + 1];
 		strcpy_s(city, strlen(c) + 1, c);
 		country = new char[strlen(count) + 1];
@@ -90,7 +90,7 @@ public:
 	}
 	void print()
 	{
-		cout << "Name: " << FIO << "  Age:" << age <<  "  Phone:" << phone << "  City:" << city << "  Country:" << country << "  University:" << university << "  Group: " << group <<  endl;
+		cout << "Name: " << FIO << "  Age:" << age <<  "  Phone:" << color << "  City:" << city << "  Country:" << country << "  University:" << university << "  Group: " << group <<  endl;
 	}
 	// cеттеры
 	void setName(const char* f)
@@ -112,9 +112,9 @@ public:
 	}
 	void setPhone(const char* p)
 	{
-		delete[] phone;
-		phone = new char[strlen(p) + 1];
-		strcpy_s(phone, strlen(p) + 1, p);
+		delete[] color;
+		color = new char[strlen(p) + 1];
+		strcpy_s(color, strlen(p) + 1, p);
 	}
 	void setCity(const char* s)
 	{
@@ -148,7 +148,7 @@ public:
 	}
 	const char* getPhone()
 	{
-		return phone;
+		return color;
 	}
 	const char* getCity()
 	{
