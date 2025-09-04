@@ -1,148 +1,32 @@
 #include <iostream>
 using namespace std;
-//
-//class Point
-//{
-//    int x;
-//    int y;
-//public:
-//    void init(int a, int b)
-//    {
-//        x = a;
-//        y = b;
-//    }
-//    void print()
-//    {
-//        cout << "X:  " << x << endl;
-//        cout << "Y:  " << y << endl;
-//    }
-//    /*void init(int a, int b)
-//    {
-//        x = rand() % 20;
-//        y = rand() % 10;
-//    }*/
-//    int Getx()
-//    {
-//        return x;
-//    }
-//    void Setx(int a)
-//    {
-//        if (a > 0)
-//        {
-//            x = a;
-//        }
-//    }
-//    int Gety()
-//    {
-//        return y;
-//    }
-//    void Sety(int a)
-//    {
-//        if (a > 0)
-//        {
-//            y = a;
-//        }
-//    }
-//};
-//int main()
-//{
-//    
-//    
-//    Point a;
-//
-//    a.init(10, 20);
-//    a.print();
-//    
-//    Point b;
-//
-//    b.init(2, 100);
-//    b.print();
-//
-//    b.Setx(5);
-//    b.print();
-//
-//}
-
-//class Drob
-//{
-//private:
-//	int chislitel;
-//	int znamenatel;
-//public:
-//	Drob(int ch, int zn)
-//	{
-//		chislitel = ch;
-//		znamenatel = zn;
-//	}
-//	void input()
-//	{
-//		cout << "Vvedite chislitel i znamenatel: ";
-//		cin >> chislitel >> znamenatel;
-//	}
-//	void print()
-//	{
-//		cout << chislitel << "/" << znamenatel << endl;
-//	}
-//	void Sum(Drob& d)
-//	{
-//		cout << "Sum: " << chislitel + d.chislitel << "\t" << znamenatel + d.znamenatel << endl;
-//	}
-//	void mult(Drob& d)
-//	{
-//		cout << "mult: " << chislitel * d.chislitel << "\t" << znamenatel * d.znamenatel << endl;
-//	}
-//	void div(Drob& d)
-//	{
-//		cout << "div: " << chislitel / d.chislitel << "\t" << znamenatel / d.znamenatel << endl;
-//	}
-//	void minus(Drob& d)
-//	{
-//		cout << "minus: " << chislitel - d.chislitel << "\t" << znamenatel - d.znamenatel << endl;
-//	}
-//	int Getx()
-//    {
-//        return chislitel;
-//    }
-//    void Setx(int a)
-//    {
-//        if (a > 0)
-//        {
-//			chislitel = a;
-//        }
-//    }
-//    int Gety()
-//    {
-//        return znamenatel;
-//    }
-//    void Sety(int a)
-//    {
-//        if (a > 0)
-//        {
-//			znamenatel = a;
-//        }
-//    }
-//};
 class Student
 {
 private:
 	char* FIO;
-	int date;
+	int age;
 	char* phone;
 	char* city;
 	char* country;
 	char* university;
 	char* group;
-
 public:
-	void print()
+	Student()
 	{
-		cout << "Name: " << FIO << "  Date:" << date <<  "  Phone:" << phone << "  City:" << city << "  Country:" << country << "  University:" << university << "  Group: " << group <<  endl;
+		FIO = nullptr;
+		age = 0;
+		phone = nullptr;
+		city = nullptr;
+		country = nullptr;
+		university = nullptr;
+		group = nullptr;
+		cout << "Constructor by default\n";
 	}
-	void init(const char *f, int d,const char *p,const char *c,const char *count,const char *u,const char *g) 
+	Student(const char* n,int a, const char* p, const char* c, const char* count, const char* u, const char* g) // конструктор с параметрами
 	{
-		FIO = new char[strlen(f) + 1];
-		strcpy_s(FIO, strlen(f) + 1, f);
-		date = d;
+		FIO = new char[strlen(n) + 1];
+		strcpy_s(FIO, strlen(n) + 1, n);
+		age = a;
 		phone = new char[strlen(p) + 1];
 		strcpy_s(phone, strlen(p) + 1, p);
 		city = new char[strlen(c) + 1];
@@ -154,8 +38,9 @@ public:
 		group = new char[strlen(g) + 1];
 		strcpy_s(group, strlen(g) + 1, g);
 	}
-	void MyDelete()
+	~Student()//destructor
 	{
+		cout << "Destructor\n";
 		delete[] FIO;
 		delete[] phone;
 		delete[] city;
@@ -163,40 +48,134 @@ public:
 		delete[] university;
 		delete[] group;
 	}
-	int getAge()
+	void init(const char* n, int a, const char* p, const char* c, const char* count, const char* u, const char* g)
 	{
-		return date;
+		if (FIO != nullptr)
+		{
+			delete[] FIO;
+		}
+		if (phone != nullptr)
+		{
+			delete[] phone;
+		}
+		if (city != nullptr)
+		{
+			delete[] city;
+		}
+		if (country != nullptr)
+		{
+			delete[] country;
+		}
+		if (university != nullptr)
+		{
+			delete[] university;
+		}
+		if (group != nullptr)
+		{
+			delete[] group;
+		}
+		FIO = new char[strlen(n) + 1];
+		strcpy_s(FIO, strlen(n) + 1, n);
+		age = a;
+		phone = new char[strlen(p) + 1];
+		strcpy_s(phone, strlen(p) + 1, p);
+		city = new char[strlen(c) + 1];
+		strcpy_s(city, strlen(c) + 1, c);
+		country = new char[strlen(count) + 1];
+		strcpy_s(country, strlen(count) + 1, count);
+		university = new char[strlen(u) + 1];
+		strcpy_s(university, strlen(u) + 1, u);
+		group = new char[strlen(g) + 1];
+		strcpy_s(group, strlen(g) + 1, g);
+	}
+	void print()
+	{
+		cout << "Name: " << FIO << "  Age:" << age <<  "  Phone:" << phone << "  City:" << city << "  Country:" << country << "  University:" << university << "  Group: " << group <<  endl;
+	}
+	// cеттеры
+	void setName(const char* f)
+	{
+		delete[] FIO;
+		FIO = new char[strlen(f) + 1];
+		strcpy_s(FIO, strlen(f) + 1,f);
 	}
 	void setAge(int a)
 	{
 		if (a > 0 && a < 100)
 		{
-			date = a;
+			age = a;
 		}
 		else
 		{
 			cout <<  "Error";
 		}
 	}
-	int getGroup()
+	void setPhone(const char* p)
 	{
-		return date;
+		delete[] phone;
+		phone = new char[strlen(p) + 1];
+		strcpy_s(phone, strlen(p) + 1, p);
 	}
-	void setGroup(int a)
+	void setCity(const char* s)
 	{
-		if (a > 0)
-		{
-			date = a;
-		}
+		delete[] city;
+		city = new char[strlen(s) + 1];
+		strcpy_s(city, strlen(s) + 1, s);
+	}
+	void setCountry(const char* c)
+	{
+		delete[] country;
+		country = new char[strlen(c) + 1];
+		strcpy_s(country, strlen(c) + 1, c);
+	}
+	void setUniversity(const char* u)
+	{
+		delete[] university;
+		university = new char[strlen(u) + 1];
+		strcpy_s(university, strlen(u) + 1, u);
+	}
+	void setGroup(const char* g)
+	{
+		delete[] group;
+		group = new char[strlen(g) + 1];
+		strcpy_s(group, strlen(g) + 1, g);
+	}
+	
+	// геттеры 
+	const char* getAge()
+	{
+		return FIO;
+	}
+	const char* getPhone()
+	{
+		return phone;
+	}
+	const char* getCity()
+	{
+		return city;
+	}
+	const char* getCountry()
+	{
+		return country;
+	}
+	const char* getUniversity()
+	{
+		return university;
+	}
+	const char* getGroup()
+	{
+		return group;
 	}
 };
 int main()
 {
-	Student One;
-	One.init("vanyok", 22, "+380985438982", "Odesa", "Ukraine","IT Step","KN-241");
+	Student One("vanyok", 22 ,"+380985438982", "Odesa", "Ukraine", "IT Step", "KN-241"); // вызов конструктора с параметрами
 	One.print();
-
-	One.setAge(99);
-	One.print();
-	One.MyDelete();
+	Student Two;
+	Two.init("Irina", 20, "+38098554322", "Odesa", "Ukraine", "IT Step", "KN-241"); // вызов конструктора по умолчанию
+	Two.print();
+	Two.setCountry("Poland");
+	Two.setCity("Krakow");
+	Two.setPhone("+4843284023");
+	Two.print();
 }
