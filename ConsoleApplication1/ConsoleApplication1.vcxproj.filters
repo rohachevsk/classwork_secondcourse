@@ -30,5 +30,8 @@
     <ClCompile Include="dz04.09.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="08\09.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
